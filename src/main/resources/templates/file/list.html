@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="cn" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>文件报表列表</title>
+</head>
+<body>
+<table>
+    <tr>
+        <td th:text="${remoteUser}"></td>
+        <td th:text="${remoteAddr}"></td>
+        <td th:text="${remoteHost}"></td>
+    </tr>
+</table>
+<hr>
+<table border="1">
+    <thead>
+    <tr>
+        <th>文件名</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="file:${fileList.fileNameList}">
+        <td th:text="${file.fileName}"></td>
+        <td><a th:href="'/download?filename='+${file.encodedFileName}">下载</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
